@@ -1,5 +1,5 @@
 # branchtodo
-A python script helping keeping track of TODOs added to code on current branch.
+A python3 script helping keeping track of TODOs added to code on current branch.
 
 ### Installation
 ```bash
@@ -10,7 +10,7 @@ pip install -r requirements.txt
 Then add this to your `bashrc` file:
 ```bash
 branchtodo() {
-    $WORKON_HOME/branchtodo/bin/python <PATH_TO_REPO>/branchtodo.py
+    $WORKON_HOME/branchtodo/bin/python <PATH_TO_REPO>/branchtodo.py "$@"
 }
 ```
 
