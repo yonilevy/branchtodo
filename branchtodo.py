@@ -5,6 +5,11 @@ from collections import defaultdict
 from clint.textui import colored
 import argparse
 
+def git_root():
+    return subprocess.check_output(
+        ["git", "rev-parse", "--show-toplevel"],
+        text=True
+    ).strip()
 
 def do(base_branch, include_dir, exclude_dir):
     maybe_exclude_arg = [] if exclude_dir is None else\
@@ -44,7 +49,8 @@ def do(base_branch, include_dir, exclude_dir):
 
 def main():
     parser = argparse.ArgumentParser(description='Review TODOs in current git branch.')
-    parser.add_argument('dir', type=str, nargs='?', help='Directory to include', default='.')
+    default_dir = git_root()
+    parser.add_argument('dir', type=str, nargs='?', help='Directory to include', default=default_dir)
     parser.add_argument('--exclude-dir',
                         '-x',
                         type=str,
